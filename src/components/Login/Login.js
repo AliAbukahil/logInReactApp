@@ -22,9 +22,16 @@ const Login = (props) => {
     will always be the same across rerendered cycles, so so we can omit them.
    */
   useEffect(() => {
-    setFormIsValid(
-      enteredEmail.includes("@") && enteredPassword.trim().length > 6
-    );
+    const identifier = setTimeout(() => {
+      console.log("Checking form validity!");
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+    }, 500);
+    return () => {
+      clearTimeout(identifier);
+      console.log("I got cleaned up!");
+    };
   }, [/* setEmailIsValid, */ enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
