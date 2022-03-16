@@ -54,6 +54,9 @@ const Login = (props) => {
     };
   }, []);
 
+  // This is an alias assignment
+  // This is not a value assignment
+  // because it's part of this object de-structuring syntax
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
 
